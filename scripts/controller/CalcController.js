@@ -31,12 +31,19 @@ class calcController {
         return this._timeEl.innerHTML = value
     }
 
+
+    
+
     get displayDate(){
         this._dateEl.innerHTML;
     }
     set displayDate(value){
         this._dateEl.innerHTML = value
     }
+
+
+
+
 
     get displayCalc(){
         return this._displayCalEl.innerHTML;
@@ -45,6 +52,11 @@ class calcController {
     set displayCalc(valor){
         this._displayCalEl.innerHTML = valor
     }
+
+
+
+
+
 
     get currentDate(){
     return new Date();
