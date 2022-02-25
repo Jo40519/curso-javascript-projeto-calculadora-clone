@@ -24,6 +24,7 @@ class calcController {
         this.displayDate = this.currentDate.toLocaleDateString(this._locale)
     }
 
+    
     get displayTime(){
         return this._timeEl.innerHTML;
     }
@@ -32,7 +33,7 @@ class calcController {
     }
 
 
-    
+
 
     get displayDate(){
         this._dateEl.innerHTML;
