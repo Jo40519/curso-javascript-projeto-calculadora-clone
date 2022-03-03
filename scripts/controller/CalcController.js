@@ -20,11 +20,8 @@ class calcController {
         }, 1000)
         
     }
-    addEventListenerAll(element, events, fn){
-        events.split(' ').forEach(event => {
-            element.addEventListener(event, fn, false)
-        })
-    }
+   
+
     clearAll(){
         this._operation = []
 
@@ -35,8 +32,44 @@ class calcController {
 
     }
 
+    getLastOperation(){
+
+        return this._operation[this._operation.length - 1]
+    }
+
+    setLastOperation(value){
+        this._operation[this._operation.length - 1] = value
+    }
+
+    isOperator(value){
+        return ( ['+', '-', '*', '/', '%'].indexOf(value) > -1 )
+    }
+
     addOperation(value){
-        this._operation.push(value)
+
+        console.log("a", isNaN(this.getLastOperation()))
+
+        if(isNaN(this.getLastOperation())){
+
+            if(this.isOperator(value)) {
+
+                this.setLastOperation(value)
+
+            } else if(isNaN(value)){
+
+                console.log(value)
+            } 
+            else {
+                this._operation.push(value)
+            }
+        } else {
+            //number
+            let newValue = this.getLastOperation().toString() + value.toString();
+            this.setLastOperation(parseInt(newValue))
+        }
+
+        
+        console.log(this._operation)
     }
 
     setError(){
@@ -52,28 +85,53 @@ class calcController {
                 this.clearEntry();
                 break;
                 case 'soma':
-                this.addOperation();
+                this.addOperation('+');
                 break;
                 case 'subtracao':
-                this.addOperation();
+                this.addOperation('-');
                 break;
                 case 'multiplicacao':
-                this.addOperation();
+                this.addOperation('*');
                 break;
                 case 'divisao':
-                this.addOperation();
+                    this.addOperation('/')
                 break;
                 case 'porcento':
-                this.addOperation();
+                    this.addOperation('%')
                 break;
                 case 'igual':
-                this.addOperation();
+        
                 break;
+
+                case 'ponto':
+                    this.addOperation('.')
+                break;
+
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    this.addOperation(parseInt(value));
+                break;
+                    
 
                 default: 
                 this.setError()
                 break;
             }
+        }
+
+
+        addEventListenerAll(element, events, fn){
+            events.split(' ').forEach(event => {
+                element.addEventListener(event, fn, false)
+            })
         }
 
     iniitButtonsEvents(){
