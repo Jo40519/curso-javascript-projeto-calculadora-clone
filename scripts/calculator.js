@@ -1,1 +1,1 @@
-    let calculator = new calcController();
+    let calculator = new calcController(); 

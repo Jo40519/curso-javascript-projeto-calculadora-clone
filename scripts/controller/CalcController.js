@@ -65,7 +65,7 @@ class calcController {
         } else {
 
             if(this.isOperator(value)){
-                this._operation.push(value)
+                this._operation.push(value) 
             }
             //number
             let newValue = this.getLastOperation().toString() + value.toString();
