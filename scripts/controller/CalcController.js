@@ -1,4 +1,4 @@
-class calcController {
+class calcController { 
     
 
     constructor(){
@@ -60,16 +60,17 @@ class calcController {
                 console.log(value)
             } 
             else {
-                this._operation.push(value)
+                this._operation.push(value) 
             }
         } else {
 
-            if(this.isOperator(value)){
-                this._operation.push(value) 
+            if (this.isOperator(value)) {
+                this._operation.push(value)
+            } else {
+                //number
+                let newValue = this.getLastOperation().toString() + value.toString();
+                this.setLastOperation(parseInt(newValue))
             }
-            //number
-            let newValue = this.getLastOperation().toString() + value.toString();
-            this.setLastOperation(parseInt(newValue))
         }
 
         
