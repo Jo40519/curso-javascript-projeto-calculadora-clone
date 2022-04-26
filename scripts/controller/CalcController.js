@@ -338,13 +338,13 @@ class calcController {
 
         addEventListenerAll(element, events, fn){
             events.split(' ').forEach(event => {
-                element.addEventListener(event, fn, false)
+                element.addEventListener(event, fn, false)  
             })
         }
 
     iniitButtonsEvents(){
         let buttons = document.querySelectorAll("#buttons > g, #parts > g")
-
+        console.log(buttons)
         buttons.forEach((btn,index) => {
             this.addEventListenerAll(btn, 'click drag', e => {
                 let textBtn = btn.className.baseVal.replace('btn-', '')
